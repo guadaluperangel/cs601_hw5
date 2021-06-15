@@ -1,56 +1,24 @@
-//html id variables
-var firstName;
-var lastName;
-var facilitator;
-var submit;
-var alphabetCheck;
+var xhr;
+var jsonData;
+//write event handler
+function clicks(){
+    document.getElementById("button").onclick = function() {
+        //create xmlhttpRequest object
+        xhr = new XMLHttpRequest();
 
-//validate firstName is longer than 2 char
-function validateName() {
-    if (firstName.value.length >= 2 && firstName.value.match(alphabetCheck)) {
-        return true;
-    } else {
-        alert("Please enter a firstname with two (2) or more characters.");
-        firstName.focus();
-        return false;
+        xhr.onreadystatechange = tables;
+
+        //sending request to server
+        xhr.open("GET", "https://guadaluperangel.github.io/cs601_hw5/data/college_degrees.json", true);
+        xhr.send();
     }
 }
-
-//validate lastName is longer than 2 char
-function validateLastName() {
-    if (lastName.value.length >= 2 && lastName.value.match(alphabetCheck)) {
-        return true;
-    } else {
-        alert("Please enter a lastname with two (2) or more characters.");
-        lastName.focus();
-        return false;
-        
+function tables(){
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            //console.log(xhr.response);
+            alert(xhr.responseText);
+            jsonData = xhr.responseText;
+        }
     }
-}
-
-//validate facilitator
-function validateFacilitator () {
-    if ((facilitator === "Laura") || (facilitator === "Fazil") || (facilitator === "Harsh")) {
-        return true;
-    } else {
-        alert("Please enter a valid facilitator name.");
-        facilitator.focus();
-        return false; 
-    }
-}
-
-//validate all fields
-function checks () {
-
-    //html id variables
-    firstName = document.getElementById("firstName");
-    lastName = document.getElementById("lastName");
-    facilitator = document.getElementById("facilitator");
-    submit = document.getElementById("submit");
-    alphabetCheck = "[a-z]";
-
-
-    validateFacilitator();
-    validateLastName();
-    validateName();
 }
