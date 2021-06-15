@@ -1,0 +1,20 @@
+{
+    "college_degrees":[
+        {
+            "degree":{
+                "School": "California State University, San Bernardino",
+                "Major": "Administration, Information Systems and Technology",
+                "Type": "Bachelor of Arts",
+                "Year conferred": "2018"
+            }
+        },
+        {
+            "degree":{
+                "School": "Boston University",
+                "Major": "Software Development",
+                "Type": "Master of Science",
+                "Year conferred": "2022"
+            }
+        }
+    ]
+}
